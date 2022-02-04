@@ -41,6 +41,12 @@ function App({ Component, pageProps }: AppProps) {
                 font-weight: 800;
                 font-style: normal;
               }
+              @font-face {
+                font-family: 'Honey';
+                src: url('./fonts/Honey/VCHoney-Extrabold.woff');
+                font-weight: 800;
+                font-style: normal;
+              }
             `,
           }}
         />

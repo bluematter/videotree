@@ -5,9 +5,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
   { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "Pricing", href: "#" },
 ];
 
 export default function Hero() {
@@ -31,12 +29,8 @@ export default function Hero() {
           >
             <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  />
+                <a href="#" className="font-bold font-honey text-xl">
+                  Videotree
                 </a>
                 <div className="-mr-2 flex items-center md:hidden">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -46,7 +40,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+            <div className="hidden md:block md:ml-auto md:pr-4 md:space-x-8">
               {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -58,7 +52,7 @@ export default function Hero() {
               ))}
               <a
                 href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="font-medium py-2 px-4 rounded-lg text-blue-600 bg-blue-100 hover:bg-blue-200"
               >
                 Log in
               </a>
@@ -107,7 +101,7 @@ export default function Hero() {
                 </div>
                 <a
                   href="#"
-                  className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                  className="block w-full px-5 py-3 text-center font-medium text-blue-600 bg-gray-50 hover:bg-gray-100"
                 >
                   Log in
                 </a>
@@ -117,28 +111,27 @@ export default function Hero() {
         </Popover>
       </div>
 
-      <div className="container px-4 my-8 grid gap-x-6 md:grid-cols-[6fr_4fr] mx-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            A Better Way To Connect Through Video
+      <div className="container px-4 grid gap-x-6 md:grid-cols-[6fr_4fr] mx-auto">
+        <div className="mb-8 mt-12">
+          <h1 className="text-4xl font-honey tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            The Interactive Video Communication Tool
           </h1>
           <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+            Interact with your audience asynchronously and create a personalized
+            experience while focusing on what matters most.
           </p>
           <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div className="rounded-md shadow">
+            <div className="shadow">
               <a
                 href="#"
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-6 md:text-lg md:px-12"
+                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg font-bold text-blue-600 bg-blue-100 hover:bg-blue-200 md:py-6 md:text-xl md:px-12"
               >
                 Start Building
               </a>
             </div>
           </div>
         </div>
-        <div className="relative flex justify-end">
+        <div className="relative flex justify-end mb-12">
           <img
             className="rounded-2xl"
             src="https://assets.website-files.com/61589a0e40656a59efdc676c/6158d3150d59301986f07d3e_Hero%20girl.png"
@@ -150,7 +143,7 @@ export default function Hero() {
             src="https://assets.website-files.com/61589a0e40656a59efdc676c/6158d31593bb5558cda1e9fe_Hero%20Ui.svg"
             loading="lazy"
             alt=""
-            className="absolute left-[0px] bottom-[-20px] top-[auto] right-[auto]"
+            className="drop-shadow-md absolute height-[250px] left-[0px] bottom-[-20px] top-[auto] right-[auto]"
           />
         </div>
       </div>

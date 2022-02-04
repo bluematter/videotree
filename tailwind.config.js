@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
+      'honey': ["Honey"],
       "sans": ["DM Sans"],
       "body": ['"DM Sans"']
     },

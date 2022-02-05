@@ -2,15 +2,22 @@ import { cloneElement } from "react";
 
 // the diagram model
 const CustomNode = (props: any) => {
-  const { inputs, outputs } = props;
+  const { id, data, inputs, outputs } = props;
+
+  const handleActive = (e: any) => {
+    e.stopPropagation();
+
+    data.onActive(id);
+  };
 
   return (
     <div
-      className="bg-white border-solid border rounded"
+      className="bg-white border-solid border rounded cursor-pointer"
       style={{
         width: 100,
         height: 200,
       }}
+      onClick={handleActive}
     >
       <video
         style={{ maxWidth: 100 }}

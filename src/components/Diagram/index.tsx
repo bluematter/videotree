@@ -1,63 +1,22 @@
-import Diagram, { createSchema, useSchema } from "beautiful-react-diagrams";
+import { FC } from "react";
+import Diagram from "beautiful-react-diagrams";
 import "beautiful-react-diagrams/styles.css";
-import CustomNode from "./Node";
 
-const initialSchema = createSchema({
-  nodes: [
-    {
-      id: "node-custom-0",
-      disableDrag: true,
-      coordinates: [350, 60],
-      render: CustomNode,
-      outputs: [
-        {
-          id: "custom-port-0",
-          alignment: "left",
-        },
-      ],
-    },
-    {
-      id: "node-custom-1",
-      coordinates: [250, 60],
-      render: CustomNode,
-      inputs: [
-        {
-          id: "custom-port-1",
-          alignment: "left",
-        },
-      ],
-    },
-    {
-      id: "node-custom-2",
-      coordinates: [250, 60],
-      render: CustomNode,
-      inputs: [
-        {
-          id: "custom-port-2",
-          alignment: "left",
-        },
-      ],
-    },
-  ],
-});
-
-const TreeDiagram = () => {
-  const [schema, { onChange }] = useSchema(initialSchema);
-
+const TreeDiagram: FC<any> = ({ schema, onChange }) => {
   return (
     <div className="relative" style={{ height: "1000px" }}>
       <Diagram schema={schema} onChange={onChange} />
       <svg
         className="absolute inset-0"
-        width={640}
+        width={800}
         height={784}
         fill="none"
-        viewBox="0 0 640 784"
+        viewBox="0 0 800 784"
       >
         <defs>
           <pattern
             id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
-            x={118}
+            x={0}
             y={0}
             width={20}
             height={20}
@@ -74,8 +33,8 @@ const TreeDiagram = () => {
           </pattern>
         </defs>
         <rect
-          x={118}
-          width={404}
+          x={0}
+          width={800}
           height={784}
           fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)"
         />

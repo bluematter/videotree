@@ -11,7 +11,9 @@ const Left: FC<any> = ({ active }) => {
           {active ? (
             <div>Show active {active}</div>
           ) : (
-            <div className="p-6">Put list of videos here</div>
+            <div className="p-6">
+              Put list of videos here... if empty show they can upload
+            </div>
           )}
         </div>
       </section>

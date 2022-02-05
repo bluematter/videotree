@@ -4,8 +4,9 @@ import Header from "./Header";
 import LeftColumn from "./Columns/Left";
 import RightColumn from "./Columns/Right";
 import CustomNode from "../../components/Diagram/Node";
+import withUploadZone from "src/lib/withUploadZone";
 
-export default function Example() {
+const Create = () => {
   const [active, setActive] = useState<string>("");
   const [schema, { onChange }] = useSchema(
     createSchema({
@@ -63,4 +64,6 @@ export default function Example() {
       </footer>
     </div>
   );
-}
+};
+
+export default withUploadZone(Create);

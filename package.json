@@ -16,6 +16,7 @@
     "@heroicons/react": "^1.0.5",
     "@types/node": "^17.0.14",
     "@types/react": "^17.0.39",
+    "beautiful-react-diagrams": "^0.5.1",
     "next": "^12.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

@@ -18,6 +18,7 @@ import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
+import TreeDiagram from "src/components/Diagram";
 
 const user = {
   name: "Tom Cook",
@@ -345,7 +346,9 @@ export default function Example() {
                     Section title
                   </h2>
                   <div className="rounded-lg bg-white overflow-hidden shadow">
-                    <div className="p-6">Put tree diagram here</div>
+                    <div className="p-6">
+                      <TreeDiagram />
+                    </div>
                   </div>
                 </section>
               </div>

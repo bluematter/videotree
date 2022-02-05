@@ -9,6 +9,7 @@ import { FileErrorToast } from "../components/Toasts";
 const UploadZoneStyle = styled.div`
   width: 100%;
   height: 100%;
+  cursor: default;
 `;
 
 const ActiveDrop = styled.div`
@@ -153,23 +154,21 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
     });
 
     return (
-      <>
-        <UploadZoneStyle {...(getRootProps as any)()}>
-          {isDragActive && (
-            <ActiveDrop>
-              <h1 className="font-weight-bold">Drop media to upload</h1>
-            </ActiveDrop>
-          )}
-          <Component
-            {...(props as P)}
-            isUploadActive={{
-              active: isDragActive,
-              firstFileType,
-            }}
-            onUploadFiles={handleDrop}
-          />
-        </UploadZoneStyle>
-      </>
+      <UploadZoneStyle {...(getRootProps as any)()}>
+        {isDragActive && (
+          <ActiveDrop>
+            <h1 className="font-weight-bold">Drop media to upload</h1>
+          </ActiveDrop>
+        )}
+        <Component
+          {...(props as P)}
+          isUploadActive={{
+            active: isDragActive,
+            firstFileType,
+          }}
+          onUploadFiles={handleDrop}
+        />
+      </UploadZoneStyle>
     );
   });
 

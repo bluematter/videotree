@@ -1,0 +1,56 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("VERCEL_API_PG_URL")
+}
+
+model UserMedia {
+  id    String  @id @default(cuid())
+  a     String?
+  b     String?
+  user  User?   @relation(fields: [a], references: [id])
+  media Media?  @relation(fields: [b], references: [id])
+
+  @@unique([a, b], name: "idx_17936_ab_unique")
+  @@index([a], map: "idx_17936_a")
+  @@index([b], map: "idx_17936_b")
+}
+
+model Media {
+  id               String      @id @default(cuid())
+  createdat        DateTime?   @default(now())
+  updatedat        DateTime?   @default(now())
+  date             DateTime?
+  duration         Float?
+  loading          Boolean?
+  mediaurl         String?
+  name             String?
+  thumbnails       String?
+  trimmed          Boolean?
+  type             String?
+  uid              String?
+  thumbnailSprites String?
+  metadata         String?
+  owner            UserMedia[]
+}
+
+model User {
+  id               String      @id @default(cuid())
+  createdat        DateTime?   @default(now())
+  updatedat        DateTime?   @default(now())
+  confirmed        Boolean?
+  email            String?     @unique
+  googleuserid     String?     @unique
+  name             String?
+  password         String?
+  picture          String?
+  stripecustomerid String?
+  stripelifetimeid String?
+  admin            Boolean?
+  emailPrefs       Json?
+  media            UserMedia[]
+}

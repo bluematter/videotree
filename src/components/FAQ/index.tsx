@@ -2,20 +2,11 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 
-const faqs = [
-  {
-    question: "What's the best thing about Switzerland?",
-    answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  // More questions...
-];
-
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Example({ faqs }: any) {
   return (
     <div className="bg-gray-50">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
@@ -24,7 +15,7 @@ export default function Example() {
             Frequently asked questions
           </h2>
           <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-            {faqs.map((faq) => (
+            {faqs.map((faq: any) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
                 {({ open }) => (
                   <>

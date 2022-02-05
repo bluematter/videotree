@@ -4,10 +4,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Pricing", href: "#" },
-];
+const navigation = [{ name: "Pricing", href: "#pricing" }];
 
 export default function Hero() {
   return (
@@ -42,7 +39,7 @@ export default function Hero() {
                 </a>
               ))}
               <a
-                href="#"
+                href="/create"
                 className="font-medium py-2 px-4 rounded-lg text-blue-600 bg-blue-100 hover:bg-blue-200"
               >
                 Log in

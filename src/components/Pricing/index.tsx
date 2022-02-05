@@ -30,7 +30,7 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <div className="bg-gray-900">
+    <div id="pricing" className="bg-gray-900">
       <div className="pt-12 sm:pt-16 lg:pt-24">
         <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto space-y-2 lg:max-w-none">
@@ -60,7 +60,7 @@ export default function Pricing() {
                   <div className="px-6 py-8 bg-white sm:p-10 sm:pb-6">
                     <div>
                       <h3
-                        className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-indigo-100 text-indigo-600"
+                        className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-blue-100 text-blue-600"
                         id="tier-standard"
                       >
                         {tier.name}
@@ -113,13 +113,13 @@ export default function Pricing() {
               <div className="flex-1">
                 <div>
                   <h3 className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-white text-gray-800">
-                    Discounted
+                    Lifetime Access
                   </h3>
                 </div>
                 <div className="mt-4 text-lg text-gray-600">
-                  Get full access to all of standard license features for solo
-                  projects that make less than $20k gross revenue for{" "}
-                  <span className="font-semibold text-gray-900">$29</span>.
+                  Get full access to all of standard license features by being
+                  an early adopter for{" "}
+                  <span className="font-semibold text-gray-900">$229</span>.
                 </div>
               </div>
               <div className="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">

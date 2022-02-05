@@ -1,5 +1,9 @@
-import Home from "../src";
+import Home from "../src/containers/Landing";
 
 export default function HomePage() {
-  return <Home />;
+  return (
+    <>
+      <Home />
+    </>
+  );
 }

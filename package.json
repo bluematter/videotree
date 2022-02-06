@@ -6,9 +6,6 @@
   "repository": "https://github.com/bluematter/videotree.git",
   "author": "bluematter <michael@motionbox.io>",
   "license": "MIT",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

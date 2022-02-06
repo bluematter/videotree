@@ -1,0 +1,20 @@
+{
+  "name": "videotree-prisma",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prisma:build": "yarn prisma:generate && yarn prisma:migrate",
+    "prisma:generate": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy' prisma generate",
+    "prisma:migrate": "DATABASE_URL=\"$PG_URL\" prisma migrate deploy"
+  },
+  "devDependencies": {
+    "prisma": "^3.9.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.9.1"
+  }
+}

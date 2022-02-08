@@ -2,6 +2,7 @@
   "name": "videotree-prisma",
   "version": "1.0.0",
   "main": "index.js",
+  "module": "./api/index.ts",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --no-notify --respawn --transpile-only api/index",
@@ -13,6 +14,11 @@
     "prisma:migrate": "DATABASE_URL=\"$PG_URL\" prisma migrate deploy"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "^17.0.16",
+    "@types/validator": "^13.7.1",
     "prisma": "^3.9.1",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
@@ -21,8 +27,12 @@
   "dependencies": {
     "@prisma/client": "^3.9.1",
     "apollo-server": "^3.6.2",
+    "bcryptjs": "^2.4.3",
     "graphql": "^16.3.0",
+    "isomorphic-fetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "nexus": "^1.2.0",
-    "nexus-prisma": "^0.35.0"
+    "nexus-prisma": "^0.35.0",
+    "validator": "^13.7.0"
   }
 }

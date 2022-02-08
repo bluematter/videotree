@@ -10,7 +10,7 @@ const server = new ApolloServer({
     optionsSuccessStatus: 204,
     credentials: true,
   },
-  schema: schema,
+  schema,
   context: createContext,
 });
 

@@ -7,10 +7,15 @@
   "author": "bluematter <michael@motionbox.io>",
   "license": "MIT",
   "scripts": {
+    "prisma": "cd packages/prisma && yarn dev",
+    "videotree": "cd packages/videotree && yarn dev",
+    "start:dev": "concurrently \"yarn videotree\" \"yarn prisma\"",
     "upgrade:all": "yarn upgrade:prisma && yarn upgrade:videotree",
     "upgrade:prisma": "cd packages/prisma && yarn upgrade",
     "upgrade:videotree": "cd packages/videotree && yarn upgrade"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
 }

@@ -9,6 +9,7 @@ const GOOGLE_AUTH = `
   mutation($googleToken: String) {
     authenticateGoogleUser(googleToken: $googleToken) {
       id
+      token
     }
   }
 `;

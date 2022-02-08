@@ -17,7 +17,7 @@ export default function Hero() {
           >
             <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#" className="font-bold font-honey text-xl">
+                <a href="/" className="font-bold font-honey text-xl">
                   Videotree
                 </a>
                 <div className="-mr-2 flex items-center md:hidden">
@@ -39,7 +39,7 @@ export default function Hero() {
                 </a>
               ))}
               <a
-                href="/create"
+                href="/login"
                 className="font-medium py-2 px-4 rounded-lg text-blue-600 bg-blue-100 hover:bg-blue-200"
               >
                 Log in

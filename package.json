@@ -6,6 +6,11 @@
   "repository": "https://github.com/bluematter/videotree.git",
   "author": "bluematter <michael@motionbox.io>",
   "license": "MIT",
+  "scripts": {
+    "upgrade:all": "yarn upgrade:prisma && yarn upgrade:videotree",
+    "upgrade:prisma": "cd packages/prisma && yarn upgrade",
+    "upgrade:videotree": "cd packages/videotree && yarn upgrade"
+  },
   "dependencies": {},
   "devDependencies": {}
 }

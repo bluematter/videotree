@@ -3,16 +3,16 @@ import { GraphQLClient } from "graphql-request";
 // import { AiOutlineGoogle } from "react-icons/ai";
 
 const GOOGLE_AUTH = `
-mutation($googleToken: String) {
-  authenticateGoogleUser(googleToken: $googleToken) {
-    id
+  mutation($googleToken: String) {
+    authenticateGoogleUser(googleToken: $googleToken) {
+      id
+    }
   }
-}
 `;
 
-const Signup = () => {
-  const graphQLClient = new GraphQLClient("http://localhost:3001");
+const graphQLClient = new GraphQLClient("http://localhost:3001");
 
+const Signup = () => {
   const handleGoogle = async (response: GoogleLoginResponse | any) => {
     const auth = await graphQLClient.request(GOOGLE_AUTH, {
       googleToken: response.tokenObj.id_token,
@@ -170,13 +170,24 @@ const Signup = () => {
                       Remember me
                     </label>
                   </div>
+                </div>
 
+                <div className="flex items-center justify-between">
                   <div className="text-sm">
                     <a
                       href="#"
                       className="font-medium text-blue-600 hover:text-blue-500"
                     >
                       Forgot your password?
+                    </a>
+                  </div>
+                  <div className="text-sm">
+                    Have an account?{" "}
+                    <a
+                      href="/login"
+                      className="font-medium text-blue-600 hover:text-blue-500"
+                    >
+                      Log In
                     </a>
                   </div>
                 </div>
@@ -195,6 +206,7 @@ const Signup = () => {
         </div>
       </div>
       <div className="hidden lg:block relative w-0 flex-1">
+        {" "}
         <img
           className="absolute inset-0 h-full w-full object-cover"
           src="https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"

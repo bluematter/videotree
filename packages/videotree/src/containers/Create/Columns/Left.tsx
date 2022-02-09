@@ -1,6 +1,9 @@
 import { FC } from "react";
+import useMedia from "src/lib/hooks/store/useMedia";
 
 const Left: FC<any> = ({ active }) => {
+  const { media } = useMedia();
+
   return (
     <div className="grid grid-cols-1 gap-4">
       <section aria-labelledby="section-2-title">
@@ -12,7 +15,9 @@ const Left: FC<any> = ({ active }) => {
             <div>Show active {active}</div>
           ) : (
             <div className="p-6">
-              Put list of videos here... if empty show they can upload
+              {media.map((item: any) => {
+                return <div key={item.id}>Uploaded Item {item.id}</div>;
+              })}
             </div>
           )}
         </div>

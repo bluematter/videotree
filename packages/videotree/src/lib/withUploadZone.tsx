@@ -6,6 +6,7 @@ import { useDropzone } from "react-dropzone";
 import uploadFiles from "./upload";
 import { FileErrorToast } from "../components/Toasts";
 import useUser from "./hooks/useUser";
+import useMedia from "./hooks/store/useMedia";
 
 const UploadZoneStyle = styled.div`
   width: 100%;
@@ -29,6 +30,7 @@ const ActiveDrop = styled.div`
 const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
   memo(({ ...props }) => {
     const { user } = useUser();
+    const { addMedia } = useMedia();
     const [firstFileType, setFirstFileType] = useState<string>("");
 
     const handleDrop = async (acceptedFiles: any) => {
@@ -71,6 +73,7 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
             await uploadFiles({
               user,
               files,
+              addMedia,
             });
           } else {
             console.log("No files or no user");

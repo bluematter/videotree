@@ -8,13 +8,14 @@ import updateRecord from "./updateRecord";
 interface IUploadFiles {
   user: User;
   files: IFile[];
+  addMedia: (media: any) => void;
 }
 
 interface IFile {
   file: File;
 }
 
-export default async ({ user, files }: IUploadFiles) => {
+export default async ({ user, files, addMedia }: IUploadFiles) => {
   try {
     // TODO: Maybe create one toast with a list?
     const toasts: any = files.map((file: { file: File }) =>
@@ -72,9 +73,12 @@ export default async ({ user, files }: IUploadFiles) => {
     console.log({
       uploadedMedia,
     });
-    // uploadedMedia.map(({ updatedRecord }: any) => {
-    //   // update ...
-    // });
+    uploadedMedia.map(({ updatedRecord }: any) => {
+      console.log({
+        updatedRecord,
+      });
+      addMedia(updatedRecord);
+    });
   } catch (e: any) {
     const toastId = toast.error(<FileErrorToast />, {
       position: toast.POSITION.TOP_CENTER,

@@ -82,6 +82,7 @@ export interface NexusGenFieldTypes {
   }
   User: { // field return type
     id: string; // ID!
+    media: NexusGenRootTypes['Media'][]; // [Media!]!
   }
 }
 
@@ -109,6 +110,7 @@ export interface NexusGenFieldTypeNames {
   }
   User: { // field return type name
     id: 'ID'
+    media: 'Media'
   }
 }
 

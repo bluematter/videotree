@@ -36,4 +36,5 @@ type Query {
 
 type User {
   id: ID!
+  media: [Media!]!
 }

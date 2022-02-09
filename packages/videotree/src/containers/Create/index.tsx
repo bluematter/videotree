@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createSchema, useSchema } from "beautiful-react-diagrams";
 import Header from "./Header";
 import LeftColumn from "./Columns/Left";
 import RightColumn from "./Columns/Right";
 import CustomNode from "../../components/Diagram/Node";
 import withUploadZone from "src/lib/withUploadZone";
+import { GRAPHQL_ENDPOINT } from "src/constants";
+import Cookies from "js-cookie";
+import useMedia from "src/lib/hooks/store/useMedia";
+
+const GET_MEDIA = `
+  query {
+    user {
+      media {
+        id
+        mediaurl
+      }
+    }
+  }
+`;
 
 const Create = () => {
+  const { addMedia } = useMedia();
   const [active, setActive] = useState<string>("");
   const [schema, { onChange }] = useSchema(
     createSchema({
@@ -30,9 +45,41 @@ const Create = () => {
     })
   );
 
+  const getInitialData = () => {
+    (async () => {
+      try {
+        const token = typeof window !== "undefined" && Cookies.get("token");
+
+        const res = await fetch(GRAPHQL_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            query: GET_MEDIA,
+          }),
+        });
+
+        const { data } = await res.json();
+
+        data.user.media.map((media: any) => {
+          addMedia(media);
+        });
+      } catch (e) {
+        console.log("Error fetching user media", {
+          e,
+        });
+      }
+    })();
+  };
+
   const handleClick = () => {
     setActive("");
   };
+
+  useEffect(getInitialData, []);
 
   return (
     <div className="min-h-full" onClick={handleClick}>

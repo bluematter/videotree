@@ -25,7 +25,11 @@ export default (t: any) => {
             mediaurl,
             name,
             type,
-            userId: ownerId,
+            user: {
+              connect: {
+                id: ownerId,
+              },
+            },
           },
         });
       } catch (e: any) {

@@ -32,12 +32,9 @@ const createUploadRecord = async ({ user, file }: ICreateUpload) => {
       loading: true,
     });
 
-    console.log({
-      createMedia,
-    });
-
     return {
       file,
+      createMedia,
     };
   } catch (e: any) {
     console.log("Error inside createRecord", {

@@ -2,7 +2,6 @@ import AWS from "aws-sdk/global";
 import S3 from "aws-sdk/clients/s3";
 import { toast } from "react-toastify";
 import { IS_DEV } from "../../constants";
-import { User } from "../../types/User";
 
 const UPLOADS_BUCKET_NAME = IS_DEV
   ? "videotree.uploads.v1.dev"
@@ -23,13 +22,12 @@ const s3 = new S3({
 });
 
 interface IS3 {
-  user: User | null;
   file: File;
   record: any;
   toastId: string;
 }
 
-const s3Upload = async ({ user, file, record, toastId }: IS3) => {
+const s3Upload = async ({ file, record, toastId }: IS3) => {
   try {
     if (!file) {
       throw new Error(
@@ -84,7 +82,6 @@ const s3Upload = async ({ user, file, record, toastId }: IS3) => {
 
     setTimeout(() => {
       toast.dismiss(toastId);
-      onDeleteFilesProgress(record.createMedia.uid);
     }, 1500);
 
     return {

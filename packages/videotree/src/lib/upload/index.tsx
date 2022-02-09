@@ -7,14 +7,10 @@ import updateRecord from "./updateRecord";
 
 interface IUploadFiles {
   user: User;
-  files: {
-    uid: string;
-    file: File;
-  }[];
+  files: IFile[];
 }
 
 interface IFile {
-  uid: string;
   file: File;
 }
 
@@ -38,28 +34,28 @@ export default async ({ user, files }: IUploadFiles) => {
 
     // Update DB and S3
     const uploadedMedia = await Promise.all(
-      files.map(async ({ uid, file }: IFile) => {
+      files.map(async ({ file }: IFile, index: number) => {
         try {
           // Create Database records
-          const newRecord = await createRecord({ user, file });
-
-          console.log({
-            newRecord,
+          const newRecord = await createRecord({
+            user,
+            file,
           });
 
-          // const newMedia = await uploadS3({
-          //   user,
-          //   file,
-          //   // record: newRecord,
-          //   toastId: toasts[index],
-          // });
+          const newMedia = await uploadS3({
+            file,
+            record: newRecord,
+            toastId: toasts[index],
+          });
 
-          // const updatedRecord = await updateRecord({ media: newMedia });
+          const updatedRecord = await updateRecord({
+            media: newMedia,
+          });
 
           return {
-            // newRecord,
-            // newMedia,
-            // updatedRecord,
+            newRecord,
+            newMedia,
+            updatedRecord,
           };
         } catch (e: any) {
           const errMsg = `Updating the record failed, we should let the user know ${e} ${JSON.stringify(
@@ -73,6 +69,9 @@ export default async ({ user, files }: IUploadFiles) => {
     );
 
     // Update UI
+    console.log({
+      uploadedMedia,
+    });
     // uploadedMedia.map(({ updatedRecord }: any) => {
     //   // update ...
     // });

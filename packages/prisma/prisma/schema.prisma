@@ -15,22 +15,17 @@ datasource db {
 }
 
 model Media {
-  id               String    @id @default(cuid())
-  createdat        DateTime? @default(now())
-  updatedat        DateTime? @default(now())
-  date             DateTime?
-  duration         Float?
-  loading          Boolean?
-  mediaurl         String?
-  name             String?
-  thumbnails       String?
-  trimmed          Boolean?
-  type             String?
-  uid              String?
-  thumbnailSprites String?
-  metadata         String?
-  userId           String
-  user             User      @relation(fields: [userId], references: [id])
+  id        String    @id @default(cuid())
+  createdat DateTime? @default(now())
+  updatedat DateTime? @default(now())
+  date      DateTime?
+  duration  Float?
+  loading   Boolean?
+  mediaurl  String?
+  name      String?
+  type      String?
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
 }
 
 model User {

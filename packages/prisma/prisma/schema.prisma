@@ -18,7 +18,6 @@ model Media {
   id        String    @id @default(cuid())
   createdat DateTime? @default(now())
   updatedat DateTime? @default(now())
-  date      DateTime?
   duration  Float?
   loading   Boolean?
   mediaurl  String?

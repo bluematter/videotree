@@ -21,7 +21,7 @@ type Mutation {
 }
 
 type Query {
-  test: User
+  user: User
 }
 
 type User {

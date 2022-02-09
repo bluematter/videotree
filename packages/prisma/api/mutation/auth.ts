@@ -4,7 +4,7 @@ import validator from "validator";
 import * as bcrypt from "bcryptjs";
 import { getGoogleUser } from "../helpers";
 
-const SECRET = "VIDEOTREE_SECRET";
+export const SECRET = "VIDEOTREE_SECRET";
 
 export const AuthenticateUserPayload = objectType({
   name: "AuthenticateUserPayload",

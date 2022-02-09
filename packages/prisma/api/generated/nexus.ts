@@ -62,7 +62,7 @@ export interface NexusGenFieldTypes {
     authenticateGoogleUser: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
   }
   Query: { // field return type
-    test: NexusGenRootTypes['User'] | null; // User
+    user: NexusGenRootTypes['User'] | null; // User
   }
   User: { // field return type
     id: string; // ID!
@@ -80,7 +80,7 @@ export interface NexusGenFieldTypeNames {
     authenticateGoogleUser: 'AuthenticateUserPayload'
   }
   Query: { // field return type name
-    test: 'User'
+    user: 'User'
   }
   User: { // field return type name
     id: 'ID'

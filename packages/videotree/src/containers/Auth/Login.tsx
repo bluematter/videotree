@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { GraphQLClient } from "graphql-request";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import GoogleLogin, { GoogleLoginResponse } from "react-google-login";
 import { AiOutlineGoogle, AiOutlineTwitter } from "react-icons/ai";
 import { MdFacebook } from "react-icons/md";
 import { GRAPHQL_ENDPOINT, IS_DEV } from "src/constants";
+import useUser from "src/lib/hooks/useUser";
 
 const GOOGLE_AUTH = `
   mutation($googleToken: String) {
@@ -17,6 +20,9 @@ const GOOGLE_AUTH = `
 const graphQLClient = new GraphQLClient(GRAPHQL_ENDPOINT);
 
 const Login = () => {
+  const router = useRouter();
+  const { user } = useUser();
+
   const handleGoogle = async (response: GoogleLoginResponse | any) => {
     try {
       const { authenticateGoogleUser } = await graphQLClient.request(
@@ -45,6 +51,12 @@ const Login = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (user?.id) {
+      router.replace("/create");
+    }
+  }, [user]);
 
   return (
     <div className="min-h-full flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

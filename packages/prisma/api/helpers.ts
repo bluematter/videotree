@@ -1,9 +1,32 @@
 import fetch from "isomorphic-fetch";
+import jwt from "jsonwebtoken";
+import { SECRET } from "./mutation/auth";
 
 interface GoogleUser {
   id: string;
   email: string | null;
 }
+
+export const getUser = (headers: any) => {
+  const authorization = headers.authorization;
+
+  if (!authorization) return null;
+  else {
+    const token = authorization.replace("Bearer ", "");
+
+    if (token !== "undefined") {
+      try {
+        const user: any = jwt.verify(token, SECRET);
+
+        return user.userId;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    return null;
+  }
+};
 
 export async function getGoogleUser(googleToken: string): Promise<GoogleUser> {
   try {

@@ -34,6 +34,13 @@ export interface NexusGenObjects {
     id?: string | null; // String
     token?: string | null; // String
   }
+  Media: { // root type
+    duration?: number | null; // Float
+    id: string; // ID!
+    mediaurl?: string | null; // String
+    name?: string | null; // String
+    type?: string | null; // String
+  }
   Mutation: {};
   Query: {};
   User: { // root type
@@ -58,8 +65,17 @@ export interface NexusGenFieldTypes {
     id: string | null; // String
     token: string | null; // String
   }
+  Media: { // field return type
+    duration: number | null; // Float
+    id: string; // ID!
+    mediaurl: string | null; // String
+    name: string | null; // String
+    type: string | null; // String
+  }
   Mutation: { // field return type
     authenticateGoogleUser: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
+    createMedia: NexusGenRootTypes['Media'] | null; // Media
+    updateMedia: NexusGenRootTypes['Media'] | null; // Media
   }
   Query: { // field return type
     user: NexusGenRootTypes['User'] | null; // User
@@ -76,8 +92,17 @@ export interface NexusGenFieldTypeNames {
     id: 'String'
     token: 'String'
   }
+  Media: { // field return type name
+    duration: 'Float'
+    id: 'ID'
+    mediaurl: 'String'
+    name: 'String'
+    type: 'String'
+  }
   Mutation: { // field return type name
     authenticateGoogleUser: 'AuthenticateUserPayload'
+    createMedia: 'Media'
+    updateMedia: 'Media'
   }
   Query: { // field return type name
     user: 'User'
@@ -91,6 +116,22 @@ export interface NexusGenArgTypes {
   Mutation: {
     authenticateGoogleUser: { // args
       googleToken?: string | null; // String
+    }
+    createMedia: { // args
+      duration?: number | null; // Float
+      loading?: boolean | null; // Boolean
+      mediaurl?: string | null; // String
+      name?: string | null; // String
+      ownerId?: string | null; // ID
+      type?: string | null; // String
+    }
+    updateMedia: { // args
+      duration?: number | null; // Float
+      id?: string | null; // ID
+      loading?: boolean | null; // Boolean
+      mediaurl?: string | null; // String
+      name?: string | null; // String
+      type?: string | null; // String
     }
   }
 }

@@ -3,8 +3,9 @@ import { v1 as uuid } from "uuid";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
-// import uploadFiles from "./uploadFiles";
+import uploadFiles from "./upload";
 import { FileErrorToast } from "../components/Toasts";
+import useUser from "./hooks/useUser";
 
 const UploadZoneStyle = styled.div`
   width: 100%;
@@ -27,16 +28,12 @@ const ActiveDrop = styled.div`
 
 const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
   memo(({ ...props }) => {
-    // const { setFilesProgress, deleteFilesProgress } = useFileStore();
+    const { user } = useUser();
     const [firstFileType, setFirstFileType] = useState<string>("");
 
     const handleDrop = async (acceptedFiles: any) => {
       if (acceptedFiles && acceptedFiles.length) {
         try {
-          console.log({
-            startDrop: new Date().toLocaleTimeString(),
-          });
-
           setFirstFileType(acceptedFiles[0].type.split("/")[0]);
 
           const files = acceptedFiles
@@ -59,11 +56,7 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
                   toast.dismiss(toastId);
                 }, 10000);
 
-                // track("error", {
-                //   message,
-                //   timestamp: new Date().toISOString(),
-                // });
-
+                // track errors here
                 return false;
               }
 
@@ -74,22 +67,13 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
               file,
             }));
 
-          if (files.length) {
-            // await uploadFiles({
-            //   batch,
-            //   deleteFilesProgress,
-            //   deleteMap,
-            //   files,
-            //   onCreateMedia,
-            //   onUpdateMedia,
-            //   setFilesProgress,
-            //   setMap,
-            //   setObject,
-            //   store,
-            //   track,
-            //   user,
-            //   videoId,
-            // });
+          if (files.length && user) {
+            await uploadFiles({
+              user,
+              files,
+            });
+          } else {
+            console.log("No files or no user");
           }
         } catch (e: any) {
           const errMsg = `Error withUploadZone createRecords ${e} ${JSON.stringify(
@@ -114,10 +98,7 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
 
           toast.done(toastId);
 
-          // track("error", {
-          //   message: errMsg,
-          //   timestamp: new Date().toISOString(),
-          // });
+          // track errors here
         }
       } else {
         const errMsg = `Error withUploadZone acceptedFiles issues ${JSON.stringify(
@@ -140,10 +121,7 @@ const withUploadZone = <P extends {}>(Component: ComponentType<P>) =>
 
         toast.done(toastId);
 
-        // track("error", {
-        //   message: errMsg,
-        //   timestamp: new Date().toISOString(),
-        // });
+        // track errors here
       }
     };
 

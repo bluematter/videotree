@@ -16,8 +16,18 @@ type AuthenticateUserPayload {
   token: String
 }
 
+type Media {
+  duration: Float
+  id: ID!
+  mediaurl: String
+  name: String
+  type: String
+}
+
 type Mutation {
   authenticateGoogleUser(googleToken: String): AuthenticateUserPayload
+  createMedia(duration: Float, loading: Boolean, mediaurl: String, name: String, ownerId: ID, type: String): Media
+  updateMedia(duration: Float, id: ID, loading: Boolean, mediaurl: String, name: String, type: String): Media
 }
 
 type Query {

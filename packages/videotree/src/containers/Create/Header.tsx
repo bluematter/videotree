@@ -10,11 +10,6 @@ const user = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Profile", href: "#", current: false },
-];
-
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -120,46 +115,6 @@ const Header = () => {
                     <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Popover.Button>
-              </div>
-            </div>
-            <div className="hidden lg:block border-t border-white border-opacity-20 py-5">
-              <div className="grid grid-cols-3 gap-8 items-center">
-                <div>
-                  <div className="max-w-md w-full mx-auto">
-                    <label htmlFor="mobile-search" className="sr-only">
-                      Search
-                    </label>
-                    <div className="relative text-white focus-within:text-gray-600">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                        <SearchIcon className="h-5 w-5" aria-hidden="true" />
-                      </div>
-                      <input
-                        id="mobile-search"
-                        className="block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-white focus:outline-none focus:bg-opacity-100 focus:border-transparent focus:placeholder-gray-500 focus:ring-0 sm:text-sm"
-                        placeholder="Search"
-                        type="search"
-                        name="search"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-span-2">
-                  <nav className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? "text-white" : "text-blue-100",
-                          "text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
               </div>
             </div>
           </div>

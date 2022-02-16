@@ -23,7 +23,7 @@ const GET_MEDIA = `
 const Create = () => {
   const { addMedia } = useMedia();
   const [active, setActive] = useState<string>("");
-  const [schema, { onChange }] = useSchema(
+  const [schema, { addNode, onChange }] = useSchema(
     createSchema({
       nodes: [
         {
@@ -91,7 +91,12 @@ const Create = () => {
           {/* Main 3 column grid */}
           <div className="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
             {/* Left column */}
-            <LeftColumn active={active} />
+            <LeftColumn
+              active={active}
+              schema={schema}
+              onActive={setActive}
+              onAddNode={addNode}
+            />
 
             {/* Right column */}
             <RightColumn schema={schema} onChange={onChange} />

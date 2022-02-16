@@ -2,7 +2,12 @@ import { FC } from "react";
 import Diagram from "beautiful-react-diagrams";
 import "beautiful-react-diagrams/styles.css";
 
-const TreeDiagram: FC<any> = ({ schema, onChange }) => {
+interface ITreeDiagram {
+  schema: any;
+  onChange: any;
+}
+
+const TreeDiagram: FC<ITreeDiagram> = ({ schema, onChange }) => {
   return (
     <div className="relative" style={{ height: "1000px" }}>
       <Diagram schema={schema} onChange={onChange} />

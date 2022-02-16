@@ -1,7 +1,18 @@
-import { FC } from "react";
+import { FC, Dispatch, SetStateAction } from "react";
+import { Node } from "beautiful-react-diagrams/@types/DiagramSchema";
 import useMedia from "src/lib/hooks/store/useMedia";
+import CustomRender from "../../../components/Diagram/Node";
 
-const Left: FC<any> = ({ active }) => {
+interface ILeftProps {
+  active: string;
+  schema: any;
+  onActive: any;
+  onAddNode: (
+    node: Node<{ onActive: Dispatch<SetStateAction<string>> }>
+  ) => undefined;
+}
+
+const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
   const { media } = useMedia();
 
   return (
@@ -16,7 +27,31 @@ const Left: FC<any> = ({ active }) => {
           ) : (
             <div className="p-6">
               {media.map((item: any) => {
-                return <div key={item.id}>Uploaded Item {item.id}</div>;
+                const handleAdd = () => {
+                  const newNode: any = {
+                    id: `node-${schema.nodes.length + 1}`,
+                    content: `Node ${schema.nodes.length + 1}`,
+                    coordinates: [
+                      schema.nodes[schema.nodes.length - 1].coordinates[0] +
+                        100,
+                      schema.nodes[schema.nodes.length - 1].coordinates[1],
+                    ],
+                    render: CustomRender,
+                    data: {
+                      onActive,
+                    },
+                    inputs: [{ id: `port-${Math.random()}` }],
+                    outputs: [{ id: `port-${Math.random()}` }],
+                  };
+
+                  onAddNode(newNode);
+                };
+
+                return (
+                  <div key={item.id} onClick={handleAdd}>
+                    {item.id}
+                  </div>
+                );
               })}
             </div>
           )}

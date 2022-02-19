@@ -34,6 +34,8 @@ const CustomNode = (props: any) => {
               margin: "auto",
               left: 0,
               right: 0,
+              top: -10,
+              borderRadius: "100em",
               background: "#1B263B",
             },
           })

@@ -21,7 +21,7 @@ const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
         </h2>
         <div className="rounded-lg bg-white overflow-hidden shadow">
           {active ? (
-            <Builder active={active} />
+            <Builder active={active} onActive={onActive} />
           ) : (
             <div className="p-6">
               <h6 className="font-bold mb-5">Uploaded Videos</h6>
@@ -39,8 +39,17 @@ const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
                     data: {
                       onActive,
                     },
-                    inputs: [{ id: `port-${Math.random()}` }],
-                    outputs: [{ id: `port-${Math.random()}` }],
+                    inputs: [
+                      {
+                        id: `port-${Math.random()}`,
+                        alignment: "bottom",
+                      },
+                    ],
+                    outputs: [
+                      {
+                        id: `port-${Math.random()}`,
+                      },
+                    ],
                   };
 
                   onAddNode(newNode);

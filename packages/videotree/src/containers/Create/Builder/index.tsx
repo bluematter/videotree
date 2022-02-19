@@ -1,17 +1,32 @@
 import { FC, SyntheticEvent } from "react";
-import { PlusSmIcon as PlusSmIconOutline } from "@heroicons/react/outline";
+import {
+  PlusSmIcon as PlusSmIconOutline,
+  XIcon,
+} from "@heroicons/react/outline";
 
 interface IBuilder {
   active: any;
+  onActive: any;
 }
 
-const Builder: FC<IBuilder> = () => {
+const Builder: FC<IBuilder> = ({ onActive }) => {
   const handleClick = (e: SyntheticEvent) => {
     e.stopPropagation();
   };
 
+  const handleClose = () => {
+    onActive("");
+  };
+
   return (
     <div className="p-6" onClick={handleClick}>
+      <div className="mb-5">
+        <XIcon
+          className="ml-auto h-6 w-6"
+          aria-hidden="true"
+          onClick={handleClose}
+        />
+      </div>
       <div className="mb-5">
         <div>
           <label

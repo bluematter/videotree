@@ -1,15 +1,13 @@
-import { FC, Dispatch, SetStateAction } from "react";
-import { Node } from "beautiful-react-diagrams/@types/DiagramSchema";
+import { FC } from "react";
 import useMedia from "src/lib/hooks/store/useMedia";
 import CustomRender from "../../../components/Diagram/Node";
+import Builder from "../Builder";
 
 interface ILeftProps {
   active: string;
   schema: any;
   onActive: any;
-  onAddNode: (
-    node: Node<{ onActive: Dispatch<SetStateAction<string>> }>
-  ) => undefined;
+  onAddNode: any;
 }
 
 const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
@@ -23,9 +21,10 @@ const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
         </h2>
         <div className="rounded-lg bg-white overflow-hidden shadow">
           {active ? (
-            <div>Show active {active}</div>
+            <Builder active={active} />
           ) : (
             <div className="p-6">
+              <h6 className="font-bold mb-5">Uploaded Videos</h6>
               {media.map((item: any) => {
                 const handleAdd = () => {
                   const newNode: any = {
@@ -48,7 +47,11 @@ const Left: FC<ILeftProps> = ({ active, schema, onActive, onAddNode }) => {
                 };
 
                 return (
-                  <div key={item.id} onClick={handleAdd}>
+                  <div
+                    key={item.id}
+                    className="py-2 px-4 hover:bg-gray-100 rounded-md cursor-pointer"
+                    onClick={handleAdd}
+                  >
                     {item.id}
                   </div>
                 );

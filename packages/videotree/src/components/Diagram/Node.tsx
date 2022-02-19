@@ -1,26 +1,31 @@
 import { cloneElement } from "react";
 
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(" ");
+}
+
 // the diagram model
 const CustomNode = (props: any) => {
   const { id, data, inputs, outputs } = props;
 
   const handleActive = (e: any) => {
     e.stopPropagation();
-
     data.onActive(id);
   };
 
   return (
     <div
-      className="bg-white border-solid border rounded cursor-pointer"
+      className={classNames(
+        data.active && "shadow-[0_0_0_3px_#2463eb]",
+        "bg-white border-solid border rounded-2xl cursor-pointer"
+      )}
       style={{
-        width: 100,
-        height: 200,
+        width: 200,
       }}
       onClick={handleActive}
     >
       <video
-        style={{ maxWidth: 100 }}
+        style={{ maxWidth: "100%" }}
         className="rounded-2xl"
         muted={true}
         loop={true}

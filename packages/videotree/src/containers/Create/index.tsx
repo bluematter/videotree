@@ -29,10 +29,11 @@ const Create = () => {
         {
           id: "node-custom-0",
           data: {
+            active: false,
             onActive: setActive,
           },
           disableDrag: true,
-          coordinates: [350, 60],
+          coordinates: [400 - 100, 60],
           render: CustomNode,
           outputs: [
             {
@@ -80,6 +81,18 @@ const Create = () => {
   };
 
   useEffect(getInitialData, []);
+  useEffect(() => {
+    onChange({
+      links: schema.links,
+      nodes: schema.nodes.map((node) => ({
+        ...node,
+        data: {
+          active: node.id === active,
+          onActive: setActive,
+        },
+      })),
+    });
+  }, [active]);
 
   return (
     <div className="min-h-full" onClick={handleClick}>

@@ -12,11 +12,11 @@ const TreeDiagram: FC<ITreeDiagram> = ({ schema, onChange }) => {
     <div className="relative" style={{ height: "1000px" }}>
       <Diagram schema={schema} onChange={onChange} />
       <svg
-        className="absolute inset-0"
+        className="absolute top-[8px] left-[8px]"
         width={800}
-        height={784}
+        height={1000}
         fill="none"
-        viewBox="0 0 800 784"
+        viewBox="0 0 800 1000"
       >
         <defs>
           <pattern
@@ -40,7 +40,7 @@ const TreeDiagram: FC<ITreeDiagram> = ({ schema, onChange }) => {
         <rect
           x={0}
           width={800}
-          height={784}
+          height={1000}
           fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)"
         />
       </svg>

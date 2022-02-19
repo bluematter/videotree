@@ -17,8 +17,8 @@ const Media: FC<IMedia> = ({ schema, onActive, onAddNode }) => {
       {media.map((item: any) => {
         const handleAdd = () => {
           const newNode: any = {
-            id: `node-${schema.nodes.length + 1}`,
-            content: `Node ${schema.nodes.length + 1}`,
+            id: `node-custom-${schema.nodes.length}`,
+            content: `Node ${schema.nodes.length}`,
             coordinates: [
               schema.nodes[schema.nodes.length - 1].coordinates[0] + 100,
               schema.nodes[schema.nodes.length - 1].coordinates[1],
@@ -35,13 +35,18 @@ const Media: FC<IMedia> = ({ schema, onActive, onAddNode }) => {
             },
             inputs: [
               {
-                id: `port-${Math.random()}`,
+                id: `port-${schema.nodes.length}`,
                 alignment: "bottom",
               },
             ],
             outputs: [
               {
-                id: `port-${Math.random()}`,
+                id: `custom-port-left-${schema.nodes.length}-0`,
+                alignment: "left",
+              },
+              {
+                id: `custom-port-right-${schema.nodes.length + 1}-0`,
+                alignment: "right",
               },
             ],
           };

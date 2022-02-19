@@ -36,25 +36,45 @@ const CustomNode = (props: any) => {
               right: 0,
               top: -10,
               borderRadius: "100em",
-              background: "#1B263B",
+              background: "#333",
             },
           })
         )}
-        {outputs.map((port: any) =>
-          cloneElement(port, {
-            style: {
-              right: 0,
-              left: 0,
-              bottom: 20,
-              margin: "auto",
-              position: "absolute",
-              width: "80%",
-              height: "20px",
-              borderRadius: "100rem",
-              background: "#eee",
-            },
-          })
-        )}
+        <div className="absolute bottom-[20px] left-0 right-0">
+          {data.options.map((option: any) => (
+            <div className="relative mt-3">
+              {cloneElement(outputs[0], {
+                style: {
+                  position: "absolute",
+                  left: -10,
+                  top: 0,
+                  bottom: 0,
+                  margin: "auto",
+                  width: "20px",
+                  height: "20px",
+                  borderRadius: "100rem",
+                  background: "#333",
+                },
+              })}
+              <div className="py-1 px-3 mx-auto rounded-full text-sm w-[80%] bg-gray-200">
+                {option.title}
+              </div>
+              {cloneElement(outputs[1], {
+                style: {
+                  position: "absolute",
+                  right: -10,
+                  top: 0,
+                  bottom: 0,
+                  margin: "auto",
+                  width: "20px",
+                  height: "20px",
+                  borderRadius: "100rem",
+                  background: "#333",
+                },
+              })}
+            </div>
+          ))}
+        </div>
       </>
       <video
         style={{ maxWidth: "100%", pointerEvents: "none" }}

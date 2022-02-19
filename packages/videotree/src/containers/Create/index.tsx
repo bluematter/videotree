@@ -42,8 +42,12 @@ const Create = () => {
           render: CustomNode,
           outputs: [
             {
-              id: "custom-port-0",
-              alignment: "bottom",
+              id: "custom-port-left-0-0",
+              alignment: "left",
+            },
+            {
+              id: "custom-port-right-0-0",
+              alignment: "right",
             },
           ],
         },
@@ -88,7 +92,7 @@ const Create = () => {
   const addOption = (nodeId: string) => {
     onChange({
       links: schema.links,
-      nodes: schema.nodes.map((node) => ({
+      nodes: schema.nodes.map((node, index) => ({
         ...node,
         data: {
           active: node.id === active,
@@ -104,9 +108,28 @@ const Create = () => {
               : node.data.options
             : [],
         },
+        outputs: [
+          ...(node.outputs ? node.outputs : []),
+          {
+            id: `custom-port-left-${index}-${
+              node.outputs ? node.outputs.length + 1 : 0
+            }`,
+            alignment: "left",
+          },
+          {
+            id: `custom-port-right-${index}-${
+              node.outputs ? node.outputs.length + 1 : 0
+            }`,
+            alignment: "right",
+          },
+        ],
       })),
     });
   };
+
+  console.log({
+    schema,
+  });
 
   useEffect(getInitialData, []);
   useEffect(() => {

@@ -38,7 +38,7 @@ const Create = () => {
           outputs: [
             {
               id: "custom-port-0",
-              alignment: "left",
+              alignment: "bottom",
             },
           ],
         },

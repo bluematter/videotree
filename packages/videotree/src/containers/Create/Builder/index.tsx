@@ -3,19 +3,28 @@ import {
   PlusSmIcon as PlusSmIconOutline,
   XIcon,
 } from "@heroicons/react/outline";
+import Option from "./Option";
 
 interface IBuilder {
-  active: any;
+  active: string;
+  schema: any;
   onActive: any;
+  onAddOption: any;
 }
 
-const Builder: FC<IBuilder> = ({ onActive }) => {
+const Builder: FC<IBuilder> = ({ active, schema, onActive, onAddOption }) => {
+  const activeNode = schema.nodes.find((node: any) => node.id === active);
+
   const handleClick = (e: SyntheticEvent) => {
     e.stopPropagation();
   };
 
   const handleClose = () => {
     onActive("");
+  };
+
+  const handleAddOption = () => {
+    onAddOption(active);
   };
 
   return (
@@ -27,28 +36,13 @@ const Builder: FC<IBuilder> = ({ onActive }) => {
           onClick={handleClose}
         />
       </div>
-      <div className="mb-5">
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-bold text-gray-700"
-          >
-            First Option
-          </label>
-          <div className="mt-1">
-            <input
-              type="text"
-              name="option-1"
-              id="option-1"
-              className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-              placeholder="Option"
-            />
-          </div>
-        </div>
-      </div>
+      {activeNode?.data?.options?.map((option: any, index: number) => (
+        <Option key={index} option={option} />
+      ))}
       <button
         type="button"
         className="flex mx-auto items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        onClick={handleAddOption}
       >
         <PlusSmIconOutline className="h-6 w-6" aria-hidden="true" />
       </button>

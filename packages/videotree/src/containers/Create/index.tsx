@@ -31,6 +31,11 @@ const Create = () => {
           data: {
             active: false,
             onActive: setActive,
+            options: [
+              {
+                title: "First Option",
+              },
+            ],
           },
           disableDrag: true,
           coordinates: [400 - 100, 60],
@@ -80,6 +85,29 @@ const Create = () => {
     setActive("");
   };
 
+  const addOption = (nodeId: string) => {
+    onChange({
+      links: schema.links,
+      nodes: schema.nodes.map((node) => ({
+        ...node,
+        data: {
+          active: node.id === active,
+          onActive: setActive,
+          options: node.data
+            ? nodeId === node.id
+              ? [
+                  ...node.data.options,
+                  {
+                    title: "New Option",
+                  },
+                ]
+              : node.data.options
+            : [],
+        },
+      })),
+    });
+  };
+
   useEffect(getInitialData, []);
   useEffect(() => {
     onChange({
@@ -89,6 +117,7 @@ const Create = () => {
         data: {
           active: node.id === active,
           onActive: setActive,
+          options: node.data ? node.data.options : [],
         },
       })),
     });
@@ -109,6 +138,7 @@ const Create = () => {
               schema={schema}
               onActive={setActive}
               onAddNode={addNode}
+              onAddOption={addOption}
             />
 
             {/* Right column */}

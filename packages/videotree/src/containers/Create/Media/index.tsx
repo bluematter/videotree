@@ -41,7 +41,7 @@ const Media: FC<IMedia> = ({ schema, onActive, onAddNode }) => {
             ],
             outputs: [
               {
-                id: `custom-port-left-${schema.nodes.length}-0`,
+                id: `custom-port-left-${schema.nodes.length + 1}-0`,
                 alignment: "left",
               },
               {

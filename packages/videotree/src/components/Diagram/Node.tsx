@@ -13,6 +13,11 @@ const CustomNode = (props: any) => {
     data.onActive(id);
   };
 
+  console.log({
+    options: data.options,
+    outputs
+  })
+
   return (
     <div
       className={classNames(
@@ -41,9 +46,9 @@ const CustomNode = (props: any) => {
           })
         )}
         <div className="absolute bottom-[20px] left-0 right-0">
-          {data.options.map((option: any) => (
+          {data.options.map((option: any, index: number) => (
             <div className="relative mt-3">
-              {cloneElement(outputs[0], {
+              {cloneElement(outputs[index + index], {
                 style: {
                   position: "absolute",
                   left: -10,
@@ -59,7 +64,7 @@ const CustomNode = (props: any) => {
               <div className="py-1 px-3 mx-auto rounded-full text-sm w-[80%] bg-gray-200">
                 {option.title}
               </div>
-              {cloneElement(outputs[1], {
+              {cloneElement(outputs[index + 1 + index], {
                 style: {
                   position: "absolute",
                   right: -10,

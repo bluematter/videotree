@@ -112,13 +112,13 @@ const Create = () => {
           ...(node.outputs ? node.outputs : []),
           {
             id: `custom-port-left-${index}-${
-              node.outputs ? node.outputs.length + 1 : 0
+              node.outputs ? node.outputs.length - 1 : 0
             }`,
             alignment: "left",
           },
           {
             id: `custom-port-right-${index}-${
-              node.outputs ? node.outputs.length + 1 : 0
+              node.outputs ? node.outputs.length - 1 : 0
             }`,
             alignment: "right",
           },

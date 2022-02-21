@@ -127,10 +127,6 @@ const Create = () => {
     });
   };
 
-  console.log({
-    schema,
-  });
-
   useEffect(getInitialData, []);
   useEffect(() => {
     onChange({
@@ -138,6 +134,7 @@ const Create = () => {
       nodes: schema.nodes.map((node) => ({
         ...node,
         data: {
+          schema,
           active: node.id === active,
           onActive: setActive,
           options: node.data ? node.data.options : [],

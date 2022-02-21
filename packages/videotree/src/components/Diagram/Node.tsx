@@ -13,10 +13,18 @@ const CustomNode = (props: any) => {
     data.onActive(id);
   };
 
-  console.log({
-    options: data.options,
-    outputs
-  })
+  const handlePrevent = (e: any) => {
+    e.stopPropagation();
+  };
+
+  // TODO: Bug when new option is added
+  const connectedMap = props.data?.schema?.links.reduce(
+    (acc: any, curr: any) => ({
+      ...acc,
+      [curr.output]: curr.output,
+    }),
+    {}
+  );
 
   return (
     <div
@@ -45,38 +53,45 @@ const CustomNode = (props: any) => {
             },
           })
         )}
-        <div className="absolute bottom-[20px] left-0 right-0">
+        <div
+          className="absolute bottom-[20px] left-0 right-0"
+          onClick={handlePrevent}
+        >
           {data.options.map((option: any, index: number) => (
             <div className="relative mt-3">
-              {cloneElement(outputs[index + index], {
-                style: {
-                  position: "absolute",
-                  left: -10,
-                  top: 0,
-                  bottom: 0,
-                  margin: "auto",
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "100rem",
-                  background: "#333",
-                },
-              })}
+              {!!!(
+                connectedMap && connectedMap[outputs[index + 1 + index].key]
+              ) &&
+                cloneElement(outputs[index + index], {
+                  style: {
+                    position: "absolute",
+                    left: -10,
+                    top: 0,
+                    bottom: 0,
+                    margin: "auto",
+                    width: "20px",
+                    height: "20px",
+                    borderRadius: "100rem",
+                    background: "#333",
+                  },
+                })}
               <div className="py-1 px-3 mx-auto rounded-full text-sm w-[80%] bg-gray-200">
                 {option.title}
               </div>
-              {cloneElement(outputs[index + 1 + index], {
-                style: {
-                  position: "absolute",
-                  right: -10,
-                  top: 0,
-                  bottom: 0,
-                  margin: "auto",
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "100rem",
-                  background: "#333",
-                },
-              })}
+              {!!!(connectedMap && connectedMap[outputs[index + index].key]) &&
+                cloneElement(outputs[index + 1 + index], {
+                  style: {
+                    position: "absolute",
+                    right: -10,
+                    top: 0,
+                    bottom: 0,
+                    margin: "auto",
+                    width: "20px",
+                    height: "20px",
+                    borderRadius: "100rem",
+                    background: "#333",
+                  },
+                })}
             </div>
           ))}
         </div>

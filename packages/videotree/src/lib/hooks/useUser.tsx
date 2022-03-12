@@ -9,6 +9,7 @@ const GET_USER = `
   query {
     user {
       id
+      picture
     }
   }
 `;

@@ -9,19 +9,16 @@ interface ITreeDiagram {
 
 const TreeDiagram: FC<ITreeDiagram> = ({ schema, onChange }) => {
   return (
-    <div
-      className="relative"
-      style={{ height: "650px", overflowY: "auto", overflowX: "hidden" }}
-    >
-      <div style={{ height: 1000 }}>
+    <div className="relative">
+      <div style={{ height: 4000 }}>
         <Diagram schema={schema} onChange={onChange} />
       </div>
       <svg
         className="absolute top-[8px] left-[8px]"
         width={785}
-        height={1000}
+        height={4000}
         fill="none"
-        viewBox="0 0 785 1000"
+        viewBox="0 0 785 4000"
       >
         <defs>
           <pattern
@@ -45,7 +42,7 @@ const TreeDiagram: FC<ITreeDiagram> = ({ schema, onChange }) => {
         <rect
           x={0}
           width={785}
-          height={1000}
+          height={4000}
           fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)"
         />
       </svg>

@@ -1,14 +1,8 @@
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+import useUser from "src/lib/hooks/useUser";
 
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -21,6 +15,8 @@ function classNames(...classes: any) {
 }
 
 const Header = () => {
+  const { user } = useUser();
+
   return (
     <Popover as="header" className="pb-24 bg-blue-600">
       {({ open }) => (
@@ -36,13 +32,13 @@ const Header = () => {
 
               {/* Right section on desktop */}
               <div className="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
-                <button
+                {/* <button
                   type="button"
                   className="flex-shrink-0 p-1 text-blue-200 rounded-full hover:text-white hover:bg-white hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </button> */}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-4 relative flex-shrink-0">
@@ -51,8 +47,8 @@ const Header = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
+                        src={user?.picture}
+                        alt="User avatar"
                       />
                     </Menu.Button>
                   </div>
@@ -201,25 +197,25 @@ const Header = () => {
                         <div className="flex-shrink-0">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={user.imageUrl}
-                            alt=""
+                            src={user?.picture}
+                            alt="User avatar"
                           />
                         </div>
                         <div className="ml-3 min-w-0 flex-1">
                           <div className="text-base font-medium text-gray-800 truncate">
-                            {user.name}
+                            {/* {user?.name} */}
                           </div>
                           <div className="text-sm font-medium text-gray-500 truncate">
-                            {user.email}
+                            {user?.email}
                           </div>
                         </div>
-                        <button
+                        {/* <button
                           type="button"
                           className="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
                           <span className="sr-only">View notifications</span>
                           <BellIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
+                        </button> */}
                       </div>
                       <div className="mt-3 px-2 space-y-1">
                         {userNavigation.map((item) => (

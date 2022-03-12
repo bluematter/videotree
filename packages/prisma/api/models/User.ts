@@ -5,6 +5,8 @@ export const UserType = objectType({
   name: User.$name,
   definition(t) {
     t.field(User.id);
+    t.field(User.email);
+    t.field(User.picture);
 
     t.field({
       ...User.media,

@@ -43,6 +43,8 @@ const Login = () => {
           secure: true,
         });
       }
+
+      router.push("/create");
     } catch (e) {
       // remove token on error
       Cookies.remove("token");

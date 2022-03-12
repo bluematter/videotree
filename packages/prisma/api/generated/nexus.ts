@@ -44,7 +44,9 @@ export interface NexusGenObjects {
   Mutation: {};
   Query: {};
   User: { // root type
+    email?: string | null; // String
     id: string; // ID!
+    picture?: string | null; // String
   }
 }
 
@@ -81,8 +83,10 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User'] | null; // User
   }
   User: { // field return type
+    email: string | null; // String
     id: string; // ID!
     media: NexusGenRootTypes['Media'][]; // [Media!]!
+    picture: string | null; // String
   }
 }
 
@@ -109,8 +113,10 @@ export interface NexusGenFieldTypeNames {
     user: 'User'
   }
   User: { // field return type name
+    email: 'String'
     id: 'ID'
     media: 'Media'
+    picture: 'String'
   }
 }
 

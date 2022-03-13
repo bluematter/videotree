@@ -3,6 +3,8 @@ import { CheckIcon, MinusIcon } from "@heroicons/react/solid";
 import { TierLg, TierSm, FooterTier } from "./Tier";
 import PaymentModal from "./Modal";
 import BillingToggle from "./Toggle";
+import Navigation from "src/components/Navigation";
+import Footer from "src/components/Footer";
 
 export interface ITier {
   name: string;
@@ -236,9 +238,10 @@ export default function Example() {
 
   return (
     <>
-      <div className="bg-white block">
-        <div className="max-w-7xl mx-auto bg-white py-0 sm:py-24 sm:px-6 lg:px-0">
-          <div className="my-32 px-8 sm:flex sm:flex-col sm:align-center">
+      <Navigation />
+      <div className="bg-white block mb-32">
+        <div className="max-w-7xl mx-auto bg-white sm:px-6 lg:px-0">
+          <div className="mt-10 mb-32 px-8 sm:flex sm:flex-col sm:align-center">
             <h1 className="text-6xl mb-8 font-extrabold text-gray-900 sm:text-center">
               Pricing Plans
             </h1>
@@ -395,6 +398,7 @@ export default function Example() {
           </div>
         </div>
       </div>
+      <Footer />
       <PaymentModal
         billingCycle={billingCycle}
         onMonthly={handleMonthly}

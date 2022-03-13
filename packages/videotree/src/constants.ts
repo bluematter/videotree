@@ -5,3 +5,5 @@ export const GRAPHQL_ENDPOINT = IS_DEV
   : IS_STAGING
   ? "staging"
   : "production";
+export const MICRO_SERVICE_URI = "ADD_URL";
+export const STRIPE_KEY = "ADD_KEY";
